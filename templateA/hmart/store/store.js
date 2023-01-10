@@ -2,7 +2,7 @@
 if (sessionStorage.getItem("login") !== null) {
     document.getElementById("showAccount").innerHTML = sessionStorage.getItem("login")
 }
-
+let userId = sessionStorage.getItem("idUpdate")
 function displayStore(store) {
     let content = ``;
     for (let i = 0; i < store.length; i++) {
