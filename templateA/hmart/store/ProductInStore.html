@@ -24,6 +24,7 @@
     <script src="store.js"></script>
     <script src="product.js"></script>
     <script src="https://kit.fontawesome.com/8a5dbdb706.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="store.css">
     <!-- Minify Version -->
     <!-- <link rel="stylesheet" href="assets/css/plugins.min.css">
     <link rel="stylesheet" href="assets/css/style.min.css"> -->
@@ -536,7 +537,7 @@
                         <!-- Shop Top Area End -->
                         <!-- Shop Bottom Area Start -->
                         <div class="shop-bottom-area">
-                            <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal3" data-bs-whatever="@mdo" onclick="findAllCategory(),findAllIdStore()">Create Product</button>
+                            <button class="pri1" data-bs-toggle="modal" data-bs-target="#exampleModal3" data-bs-whatever="@mdo" onclick="findAllCategory(),findAllIdStore()">Create Product</button>
                             <!-- Tab Content Area Start -->
                             <div class="row">
                                 <div class="col">
@@ -1482,7 +1483,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel" style="color: black; margin-left: 250px" >Create Form</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="x" data-bs-dismiss="modal" aria-label="Close">X</button>
                 </div>
                 <div class="modal-body">
                     <form>
@@ -1521,8 +1522,8 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="createOneProduct()" data-bs-dismiss="modal">Save</button>
+                    <button type="button" class="se" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="pri" onclick="createOneProduct()" data-bs-dismiss="modal">Save</button>
                 </div>
             </div>
         </div>
