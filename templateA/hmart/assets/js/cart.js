@@ -1,5 +1,8 @@
 let idUser = sessionStorage.getItem("idUpdate");
 
+if (sessionStorage.getItem("loginOutside") !== null) {
+    document.getElementById("showAccount").innerHTML = sessionStorage.getItem("loginOutside")
+}
 function displayItemCart() {
     $.ajax({
         type: "GET",

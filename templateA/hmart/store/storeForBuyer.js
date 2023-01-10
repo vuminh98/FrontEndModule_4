@@ -1,4 +1,3 @@
-//Id:showAccount Account login
 if (sessionStorage.getItem("login") !== null) {
     document.getElementById("showAccount").innerHTML = sessionStorage.getItem("login")
 }

@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="assets/css/jquery-ui.min.css">
     <!-- Style CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <script src="assets/js/cart.js"></script>
+
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <!-- Minify Version -->
@@ -46,7 +46,7 @@
                             <ul>
                                 <li><a href="tel:0123456789"><i class="fa fa-phone"></i> +012 3456 789</a></li>
                                 <li><a href="mailto:demo@example.com"><i class="fa fa-envelope-o"></i> demo@example.com</a></li>
-                                <li><a href="my-account.html"><i class="fa fa-user"></i> Account</a></li>
+                                <li id="showAccount"><a href="login.html"><i class="fa fa-user"></i>Login</a></li>
                             </ul>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
                 <div class="row justify-content-between align-items-center">
                     <div class="col-lg-3 col">
                         <div class="header-logo">
-                            <a href="index.html"><img src="assets/images/logo/logo.png" alt="Site Logo" /></a>
+                            <a href="store/home.html"><img src="assets/images/logo/logo.png" alt="Site Logo" /></a>
                         </div>
                     </div>
                     <div class="col-lg-6 d-none d-lg-block">
@@ -712,6 +712,9 @@
     </div>
     <!-- Footer Area End -->
 </div>
+<div id="list-item-cart" hidden=""></div>
+<div id="list-payment" hidden=""></div>
+<div id="table-form-reviews" hidden=""></div>
 <!-- Global Vendor, plugins JS -->
 <!-- JS Files
 ============================================ -->
@@ -732,9 +735,8 @@
 <script src="assets/js/main.min.js"></script> -->
 
 <!--Main JS (Common Activation Codes)-->
+
 <script src="assets/js/main.js"></script>
-<div id="list-item-cart" hidden=""></div>
-<div id="list-payment" hidden=""></div>
-<div id="table-form-reviews" hidden=""></div>
+<script src="assets/js/cart.js"></script>
 </body>
 </html>
