@@ -1,3 +1,8 @@
+//Id:showAccount Account login
+if (sessionStorage.getItem("login") !== null) {
+    document.getElementById("showAccount").innerHTML = sessionStorage.getItem("login")
+}
+
 function displayStore(store) {
     let content = ``;
     for (let i = 0; i < store.length; i++) {
