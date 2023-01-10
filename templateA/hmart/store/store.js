@@ -6,7 +6,7 @@ let userId = sessionStorage.getItem("idUpdate")
 function displayStore(store) {
     let content = ``;
     for (let i = 0; i < store.length; i++) {
-        if (store[i].user.id = userId) {
+        if (store[i].user.id == userId) {
             content += `<table border = "1" style=" border:solid; margin-top: 50px">
              <tr>
             <td style="width: 250px; height: 250px"><img src="${store[i].logo}"  style="width: 200px; height: 200px;background-color: white" ></td>
