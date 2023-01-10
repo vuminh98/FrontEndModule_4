@@ -965,7 +965,7 @@ header .main-menu ul li .mega-menu li ul li:last-child a {
   background-color: #266bf9;
 }
 .search-element form button:hover {
-  background-color: #266bf9;
+  /*background-color: #266bf9;*/
 }
 .search-element.max-width-100 {
   max-width: 100%;
