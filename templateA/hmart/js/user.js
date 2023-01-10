@@ -280,7 +280,7 @@ function changePassword() {
                 event.preventDefault();
                 logout()
                 document.getElementById("changePasswordForm").submit()
-                window.location.href = "index.html"
+                window.location.href = "login.html"
                 // $.ajax({
                 //     headers:{
                 //         Authorization: 'Bearer ' + sessionStorage.getItem("token"),
