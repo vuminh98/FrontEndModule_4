@@ -231,6 +231,7 @@ function logout() {
     sessionStorage.removeItem("idUpdate")
     sessionStorage.removeItem("token")
     sessionStorage.removeItem("count")
+    sessionStorage.removeItem("idStore")
 }
 
 
@@ -308,9 +309,15 @@ function checkStore() {
         Swal.fire("You need an account detail to register as a seller")
     }else{
         window.location.href="store/store.html"
-    }}
+    }
+}
 
-
+function checkPaymentStore() {
+    let check = sessionStorage.getItem("count")
+    if (check == 1){
+        document.getElementById("paymentStore").hidden = true
+    }
+}
 
 
 
