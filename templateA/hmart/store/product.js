@@ -637,7 +637,7 @@ function displayDetailsProduct(data) {
                                     <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
                                 </div>
                                 <div class="pro-details-cart">
-                                    <button class="add-cart"> Add To
+                                    <button class="add-cart" onclick="addCartButton(${data.id})"> Add To
                                         Cart</button>
                                 </div>
                                 <div class="pro-details-compare-wishlist pro-details-wishlist ">
@@ -768,6 +768,32 @@ function comment(data) {
     </div>`
     document.getElementById("comment").innerHTML = content
 }
-
-
-
+// ---------------------------------------------o0o-----o0o--------------------------------------------------------
+//---------------------------------------------BUY PRODUCT---------------------------------------------------
+let idUser = sessionStorage.getItem("idUpdate")
+function addCartButton(productId) {
+    let newCart = {
+        id:0,
+        quantity:1,
+        price:0,
+        user: {
+            id: idUser
+        },
+        product: {
+            id: productId
+        }
+    }
+    $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        type: "POST",
+        url: "http://localhost:8080/cart/save",
+        data:JSON.stringify(newCart),
+        success: function () {
+            displayItemCart()
+        }
+    });
+    event.preventDefault();
+}
