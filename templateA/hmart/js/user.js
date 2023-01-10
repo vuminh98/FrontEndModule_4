@@ -33,7 +33,7 @@ $(document).ready(function() {
             address: "**Please enter address!",
             phone: {
                 required: "**Please enter phone!",
-                phoneVN: "Wrong format, please re-enter"
+                phoneVN: "**Wrong format, please re-enter"
             }
         },
 
