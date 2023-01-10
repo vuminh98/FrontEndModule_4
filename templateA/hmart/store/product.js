@@ -527,83 +527,74 @@ function sortProductByCategory(id) {
 function viewDetailProduct(id) {
     $.ajax({
         type: "GET",
-        url: "http://localhost:8080/pageProduct/" + id,
+        url: "http://localhost:8080/" + id,
         success: function (data) {
-            displayDetailsProduct(data.content)
+            sessionStorage.setItem("ProductId",id)
+            window.location.href = "single-product.html"
         }
     });
+    event.preventDefault()
+}
+
+
+function getProductDetail() {
+    let id = sessionStorage.getItem("ProductId")
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/" + id,
+        success: function (data) {
+            displayDetailsProduct(data)
+        }
+    })
 }
 
 function displayDetailsProduct(data) {
-let content = ``;
-    for (let i = 0; i < data.length; i++) {
-        content += `<div class="col-lg-6 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
+    let content = ``
+    content = `<div class="col-lg-6 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
                         <!-- Swiper -->
                         <div class="swiper-container zoom-top">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
-                                    <img class="img-responsive m-auto" src="${data[i].image}" alt="">
+                                    <img class="img-responsive m-auto" src="${data.image}" alt="">
                                     <a class="venobox full-preview" data-gall="myGallery" href="../assets/images/product-image/zoom-image/1.webp">
                                         <i class="fa fa-arrows-alt" aria-hidden="true"></i>
                                     </a>
                                 </div>
                                 <div class="swiper-slide">
-                                    <img class="img-responsive m-auto" src="../assets/images/product-image/zoom-image/2.webp" alt="">
+                                    <img class="img-responsive m-auto" src="image/zenbook.jpg" alt="">
                                     <a class="venobox full-preview" data-gall="myGallery" href="../assets/images/product-image/zoom-image/2.webp">
                                         <i class="fa fa-arrows-alt" aria-hidden="true"></i>
                                     </a>
                                 </div>
                                 <div class="swiper-slide">
-                                    <img class="img-responsive m-auto" src="../assets/images/product-image/zoom-image/3.webp" alt="">
+                                    <img class="img-responsive m-auto" src="image/zflip4.jpg" alt="">
                                     <a class="venobox full-preview" data-gall="myGallery" href="../assets/images/product-image/zoom-image/3.webp">
                                         <i class="fa fa-arrows-alt" aria-hidden="true"></i>
                                     </a>
                                 </div>
                                 <div class="swiper-slide">
-                                    <img class="img-responsive m-auto" src="../assets/images/product-image/zoom-image/4.webp" alt="">
+                                    <img class="img-responsive m-auto" src="image/zfold4.jpg" alt="">
                                     <a class="venobox full-preview" data-gall="myGallery" href="../assets/images/product-image/zoom-image/4.webp">
                                         <i class="fa fa-arrows-alt" aria-hidden="true"></i>
                                     </a>
                                 </div>
                                 <div class="swiper-slide">
-                                    <img class="img-responsive m-auto" src="../assets/images/product-image/zoom-image/5.webp" alt="">
-                                    <a class="venobox full-preview" data-gall="myGallery" href="../assets/images/product-image/zoom-image/5.webp">
+                                    <img class="img-responsive m-auto" src="image/ip11.jpg" alt="" >
+<a class="venobox full-preview" data-gall="myGallery" href="../assets/images/product-image/zoom-image/5.webp">
                                         <i class="fa fa-arrows-alt" aria-hidden="true"></i>
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        <div class="swiper-container mt-20px zoom-thumbs slider-nav-style-1 small-nav">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <img class="img-responsive m-auto" src="../assets/images/product-image/small-image/1.webp" alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img class="img-responsive m-auto" src="../assets/images/product-image/small-image/2.webp" alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img class="img-responsive m-auto" src="../assets/images/product-image/small-image/3.webp" alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img class="img-responsive m-auto" src="../assets/images/product-image/small-image/4.webp" alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img class="img-responsive m-auto" src="../assets/images/product-image/small-image/5.webp" alt="">
-                                </div>
-                            </div>
-                            <!-- Add Arrows -->
-                            <div class="swiper-buttons">
-                                <div class="swiper-button-next"></div>
-                                <div class="swiper-button-prev"></div>
-                            </div>
-                        </div>
+                        
                     </div>
 <div class="col-lg-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
                         <div class="product-details-content quickview-content ml-25px">
-                            <h2>${data[i].name}</h2>
+                            <h2>${data.name}</h2>
                             <div class="pricing-meta">
                                 <ul class="d-flex">
-                                    <li class="new-price">$${data[i].price}</li>
+                                    <li class="old-price">$${((data.price)*(100-data.discount))/100}</li>
+                                   
                                 </ul>
                             </div>
                             <div class="pro-details-rating-wrap">
@@ -616,12 +607,12 @@ let content = ``;
                                 </div>
                                 <span class="read-review"><a class="reviews" href="#">(5 Customer Review)</a></span>
                             </div>
-                            <p class="mt-30px">Lorem ipsum dolor sit amet, consecte adipisicing elit, sed do eiusmll tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mill veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip exet commodo consequat. Duis aute irure dolor</p>
+                            <p class="mt-30px">${data.description}</p>
                             <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
                                 <span>SKU:</span>
                                 <ul class="d-flex">
                                     <li>
-                                        <a href="#">${data[i].name}</a>
+                                        <a href="#">${data.store.description}</a>
                                     </li>
                                 </ul>
                             </div>
@@ -629,7 +620,7 @@ let content = ``;
                                 <span>Categories: </span>
                                 <ul class="d-flex">
                                     <li>
-                                        <a href="#">${data[i].category.name}</a>
+                                        <a href="#">${data.category.name}</a>
                                     </li>                            
                                 </ul>
                             </div>
@@ -637,9 +628,9 @@ let content = ``;
                                 <span>Tags: </span>
                                 <ul class="d-flex">
                                     <li>
-                                        <a href="#">${data[i].category.name}</a>
-                                    </li>                                   
-                                </ul>
+                                        <a href="#">${data.store.nameStore}</a>
+                                    </li>
+</ul>
                             </div>
                             <div class="pro-details-quality">
                                 <div class="cart-plus-minus">
@@ -677,77 +668,13 @@ let content = ``;
                                 </div>
                                 <div id="des-details1" class="tab-pane active">
                                     <div class="product-description-wrapper">
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius tempor incidid ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip efgx ea co consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occae cupidatat non proident, sunt in culpa qui
+                                        <p> IPhone is very expensive!! Don't buy
                                         </p>
                                     </div>
                                 </div>
                                 <div id="des-details3" class="tab-pane">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="review-wrapper">
-                                                <div class="single-review">
-                                                    <div class="review-img">
-                                                        <img src="../assets/images/review-image/1.png" alt="" />
-                                                    </div>
-                                                    <div class="review-content">
-                                                        <div class="review-top-wrap">
-                                                            <div class="review-left">
-                                                                <div class="review-name">
-                                                                    <h4>White Lewis</h4>
-                                                                </div>
-                                                                <div class="rating-product">
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                </div>
-                                                            </div>
-                                                            <div class="review-left">
-                                                                <a href="#">Reply</a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="review-bottom">
-                                                            <p>
-                                                                Vestibulum ante ipsum primis aucibus orci luctustrices posuere
-                                                                cubilia Curae Suspendisse viverra ed viverra. Mauris ullarper
-                                                                euismod vehicula. Phasellus quam nisi, congue id nulla.
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="single-review child-review">
-                                                    <div class="review-img">
-                                                        <img src="../assets/images/review-image/2.png" alt="" />
-                                                    </div>
-                                                    <div class="review-content">
-                                                        <div class="review-top-wrap">
-                                                            <div class="review-left">
-                                                                <div class="review-name">
-                                                                    <h4>White Lewis</h4>
-                                                                </div>
-                                                                <div class="rating-product">
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                </div>
-                                                            </div>
-                                                            <div class="review-left">
-                                                                <a href="#">Reply</a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="review-bottom">
-                                                            <p>Vestibulum ante ipsum primis aucibus orci luctustrices posuere
-                                                                cubilia Curae Sus pen disse viverra ed viverra. Mauris ullarper
-                                                                euismod vehicula.</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div class="row" id="commment">
+</div>
                                         <div class="col-lg-12">
                                             <div class="ratting-form-wrapper pl-50">
                                                 <h3>Add a Review</h3>
@@ -766,18 +693,14 @@ let content = ``;
                                                         <div class="row">
                                                             <div class="col-md-6">
                                                                 <div class="rating-form-style">
-                                                                    <input placeholder="Name" type="text" />
+                                                                    <input placeholder="Name" type="text" value="${data.store.user.name}" disabled/>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-6">
-                                                                <div class="rating-form-style">
-                                                                    <input placeholder="Email" type="email" />
-                                                                </div>
-                                                            </div>
+                                                           
                                                             <div class="col-md-12">
                                                                 <div class="rating-form-style form-submit">
-                                                                    <textarea name="Your Review" placeholder="Message"></textarea>
-                                                                    <button class="btn btn-primary btn-hover-color-primary " type="submit" value="Submit">Submit</button>
+                                                                    <textarea name="Your Review" placeholder="Message" id="message" ></textarea>
+                                                                    <button class="btn btn-primary btn-hover-color-primary " type="submit" value="Submit" onclick="getComment(${data.store.user.id})">Submit</button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -790,12 +713,61 @@ let content = ``;
                             </div>
                         </div>
                         <!-- product details description area end -->
-                    </div>`
-    }
-    content += ``
+</div>`
     document.getElementById("productDetail").innerHTML = content
 }
 
+function getComment(id) {
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/users/" + id,
+        success: function (data) {
+            comment(data)
+        }
+    })
+}
+
+function comment(data) {
+    let content = ``
+    content =  ` <div class="col-lg-12">
+        <div class="review-wrapper">
+            <div class="single-review">
+                <div class="review-img">
+                    <img src="image/user.jpg" alt=""/>
+                </div>
+                <div class="review-content">
+                    <div class="review-top-wrap">
+                        <div class="review-left">
+                            <div class="review-name">
+                                <h4>${data.store.user.name}</h4>
+                            </div>
+                            <div class="rating-product">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="review-bottom">
+                        <p>
+                          ${data.content}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="review-content">
+                <div class="review-top-wrap">
+                    <div class="review-left"></div>
+                </div>
+            </div>
+        </div>
+    </div>`
+    document.getElementById("comment").innerHTML = content
+}
 
 
 

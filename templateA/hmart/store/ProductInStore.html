@@ -21,9 +21,8 @@
     <link rel="stylesheet" href="../assets/css/jquery-ui.min.css">
     <!-- Style CSS -->
     <link rel="stylesheet" href="../assets/css/style.css">
-    <script src="store.js"></script>
-    <script src="product.js"></script>
     <script src="https://kit.fontawesome.com/8a5dbdb706.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="store.css">
     <!-- Minify Version -->
     <!-- <link rel="stylesheet" href="assets/css/plugins.min.css">
     <link rel="stylesheet" href="assets/css/style.min.css"> -->
@@ -46,7 +45,7 @@
                                 <ul>
                                     <li><a href="tel:0123456789"><i class="fa fa-phone"></i> +012 3456 789</a></li>
                                     <li><a href="mailto:demo@example.com"><i class="fa fa-envelope-o"></i> demo@example.com</a></li>
-                                    <li><a href="../my-account.html"><i class="fa fa-user"></i> Account</a></li>
+                                    <li id="showAccount"><a href="../login.html"><i class="fa fa-user"></i>Login</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -346,7 +345,7 @@
                 <ul>
                     <li><a href="tel:0123456789"><i class="fa fa-phone"></i> +012 3456 789</a></li>
                     <li><a href="mailto:demo@example.com"><i class="fa fa-envelope-o"></i> demo@example.com</a></li>
-                    <li><a href="../my-account.html"><i class="fa fa-user"></i> Account</a></li>
+                    <li id="showAccount"><a href="../login.html"><i class="fa fa-user"></i>Login</a></li>
                 </ul>
             </div>
             <div class="inner customScroll">
@@ -536,7 +535,7 @@
                         <!-- Shop Top Area End -->
                         <!-- Shop Bottom Area Start -->
                         <div class="shop-bottom-area">
-                            <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal3" data-bs-whatever="@mdo" onclick="findAllCategory(),findAllIdStore()">Create Product</button>
+                            <button class="pri1" data-bs-toggle="modal" data-bs-target="#exampleModal3" data-bs-whatever="@mdo" onclick="findAllCategory(),findAllIdStore()">Create Product</button>
                             <!-- Tab Content Area Start -->
                             <div class="row">
                                 <div class="col">
@@ -1075,13 +1074,7 @@
                             <div class="pro-pagination-style text-center text-lg-end" data-aos="fade-up" data-aos-delay="200">
                                 <div class="pages">
                                     <ul>
-                                        <li class="li"><a class="page-link" href="#"><i class="fa fa-angle-left"></i></a>
-                                        </li>
-                                        <li class="li"><a class="page-link" href="#">1</a></li>
-                                        <li class="li"><a class="page-link active" href="#">2</a></li>
-                                        <li class="li"><a class="page-link" href="#">3</a></li>
-                                        <li class="li"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a>
-                                        </li>
+
                                     </ul>
                                 </div>
                             </div>
@@ -1482,7 +1475,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel" style="color: black; margin-left: 250px" >Create Form</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="x" data-bs-dismiss="modal" aria-label="Close">X</button>
                 </div>
                 <div class="modal-body">
                     <form>
@@ -1521,8 +1514,8 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="createOneProduct()" data-bs-dismiss="modal">Save</button>
+                    <button type="button" class="se" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="pri" onclick="createOneProduct()" data-bs-dismiss="modal">Save</button>
                 </div>
             </div>
         </div>
@@ -1598,7 +1591,8 @@
 
     <!--Main JS (Common Activation Codes)-->
     <script src="../assets/js/main.js"></script>
-
+    <script src="store.js"></script>
+    <script src="product.js"></script>
 </body>
 
 </html>

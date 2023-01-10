@@ -2,12 +2,10 @@
 if (sessionStorage.getItem("login") !== null) {
     document.getElementById("showAccount").innerHTML = sessionStorage.getItem("login")
 }
-let userId = sessionStorage.getItem("idUpdate")
 function displayStore(store) {
     let content = ``;
     for (let i = 0; i < store.length; i++) {
-        if (store[i].user.id = userId) {
-            content += `<table border = "1" style=" border:solid; margin-top: 50px">
+        content += `<table border = "1" style=" border:solid; margin-top: 50px">
              <tr>
             <td style="width: 250px; height: 250px"><img src="${store[i].logo}"  style="width: 200px; height: 200px;background-color: white" ></td>
             <td style="padding-top: 0"><i class="fa-solid fa-comment-pen"></i><b style="margin-left: 10px">Description<b>: ${store[i].description}</td>
@@ -29,8 +27,7 @@ function displayStore(store) {
         <td><i class="fa-solid fa-location-dot"></i><a href="#" style="color: deepskyblue; margin-left: 10px">Address: ${store[i].addressStore} </td>
         </tr>
          </tr>`
-            content += `</table>`
-        }
+        content += `</table>`
     }
     content += `</br>`
     document.getElementById('list_store').innerHTML = content;
@@ -110,7 +107,7 @@ function transferPage(data) {
 function displayProductStore(productStore) {
     let content = ``;
     for (let i = 0; i < productStore.length; i++) {
-content += `<div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-30px">
+        content += `<div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-30px">
                                                     <!-- Single Prodect -->
                                                     <div class="product">
                                                         <span class="badges">
@@ -170,11 +167,11 @@ function findAllIdStore() {
         url: "http://localhost:8080/store",
         success: function (data) {
             let content = `<select id="store">`
-                for (let i = 0; i < data.length; i++) {
-                        content += displayNameStore(data[i])
-                    }
-                content += `<select>`
-                document.getElementById("storeForm").innerHTML = content;
+            for (let i = 0; i < data.length; i++) {
+                content += displayNameStore(data[i])
+            }
+            content += `<select>`
+            document.getElementById("storeForm").innerHTML = content;
         }
     });
 }
@@ -231,9 +228,7 @@ function getStore(store) {
 function displayStorePage(data) {
     let content = ``;
     for (let i = 0; i < data.length; i++) {
-        if (data[i].user.id == userId) {
-            content += getStore(data[i])
-        }
+        content += getStore(data[i])
     }
     content += `</br>`
     document.getElementById('list_store').innerHTML = content;

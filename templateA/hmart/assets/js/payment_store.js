@@ -1,5 +1,5 @@
-let storeId=1;
-let userId=1;
+let storeId = sessionStorage.getItem("idStore");
+let userId = sessionStorage.getItem("idUpdate");
 function getListPaymentStore(payment) {
     if (`${payment.status}` === "true") {
         return `
@@ -205,4 +205,21 @@ function informationSearchPayment() {
         }
     });
     event.preventDefault();
+}
+
+function getStoreIdToSession() {
+    $.ajax({
+        headers: {
+            Authorization: "Bearer " + sessionStorage.getItem("token"),
+        },
+        type: "GET",
+        url: "http://localhost:8080/store",
+        success: function (data) {
+            for (let i = 0; i < data.length; i++) {
+                if (data[i].user.id == userId) {
+                    sessionStorage.setItem("idStore", data[i].id)
+                }
+            }
+        }
+    });
 }

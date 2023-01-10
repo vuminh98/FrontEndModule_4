@@ -231,6 +231,7 @@ function logout() {
     sessionStorage.removeItem("idUpdate")
     sessionStorage.removeItem("token")
     sessionStorage.removeItem("count")
+    sessionStorage.removeItem("idStore")
 }
 
 
