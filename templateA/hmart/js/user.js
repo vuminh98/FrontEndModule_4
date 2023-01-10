@@ -1,4 +1,12 @@
 $(document).ready(function() {
+    $(function() {
+            jQuery.validator.addMethod("phoneVN", function(phone_number, element) {
+                phone_number = phone_number.replace(/\s+/g, "");
+                return this.optional(element) || phone_number.length > 9 &&
+                    phone_number.match(/(((\+|)84)|0)(3|5|7|8|9)+([0-9]{8})\b/);
+            }, "Please specify a valid phone number");
+    }
+    )
     $("#register").validate({
         rules: {
             name: "required",
@@ -10,8 +18,9 @@ $(document).ready(function() {
             address: "required",
             phone: {
                 required: true,
+                phoneVN: true
 
-                // regex: "(84|0[3|5|7|8|9])+([0-9]{8})\b"
+                // matches: "(84|0[3|5|7|8|9])+([0-9]{8})\b"
             }
         },
         messages: {
@@ -24,7 +33,7 @@ $(document).ready(function() {
             address: "**Please enter address!",
             phone: {
                 required: "**Please enter phone!",
-                // phoneUS: "Wrong format, please re-enter"
+                phoneVN: "Wrong format, please re-enter"
             }
         },
 
