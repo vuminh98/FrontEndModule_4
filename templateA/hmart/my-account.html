@@ -32,6 +32,7 @@
     <!-- Minify Version -->
     <link rel="stylesheet" href="assets/css/plugins.min.css">
     <link rel="stylesheet" href="assets/css/style.min.css">
+
 </head>
 
 <body onload="displayPayment();displayItemCart();displayPaymentStore();checkPaymentStore()">
@@ -522,7 +523,7 @@
                         <ul role="tablist" class="nav flex-column dashboard-list">
                             <li><a href="#dashboard" data-bs-toggle="tab" class="nav-link active">Dashboard</a></li>
                             <li><a href="#orders" data-bs-toggle="tab" class="nav-link">Orders</a></li>
-                            <li><a href="#downloads" data-bs-toggle="tab" class="nav-link">Pending</a></li>
+                            <li id="pending"><a href="#downloads" data-bs-toggle="tab" class="nav-link">Pending</a></li>
                             <li id="paymentStore"><a href="#address" data-bs-toggle="tab" class="nav-link">Payment Store</a></li>
                             <li><a data-bs-toggle="tab" class="nav-link" id="seller" onclick="checkStore()">Store</a>
                             </li>

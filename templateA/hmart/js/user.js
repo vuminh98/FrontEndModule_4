@@ -331,6 +331,7 @@ function checkPaymentStore() {
     let check = sessionStorage.getItem("count")
     if (check == 1){
         document.getElementById("paymentStore").hidden = true
+        document.getElementById("pending").hidden = true
     }
 }
 
