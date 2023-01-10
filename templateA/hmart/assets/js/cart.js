@@ -254,7 +254,7 @@ function reviewsProduct(paymentId) {
 }
 function getFormReviews(historyBuy) {
     return`            <tr>
-                            <th><img src="assets/images/Avatar.jpg" alt="loaddingg......" height="200" width="200"/></th>
+                            <th><img src="${historyBuy.product.image}" alt="loaddingg......" height="200" width="200"/></th>
                             <td style="padding:20px">
                                 <label for="comment-review-product">Comment :</label><br>
                                 <textarea id="comment-review-product-${historyBuy.product.id}" rows="20" cols="50"
