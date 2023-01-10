@@ -1,5 +1,5 @@
 let storeId=1;
-let userId=1;
+let userId = sessionStorage.getItem("idUpdate");
 function getListPaymentStore(payment) {
     if (`${payment.status}` === "true") {
         return `

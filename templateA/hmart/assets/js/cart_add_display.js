@@ -1,4 +1,4 @@
-let userId = 1;
+let userId = sessionStorage.getItem("idUpdate");
 function displayItemCart() {
     $.ajax({
         type: "GET",
