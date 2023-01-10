@@ -1,3 +1,8 @@
+//Id:showAccount Account login
+if (sessionStorage.getItem("login") !== null) {
+    document.getElementById("showAccount").innerHTML = sessionStorage.getItem("login")
+}
+
 function displayStore(store) {
     let content = ``;
     for (let i = 0; i < store.length; i++) {
@@ -47,11 +52,15 @@ function createStore() {
     let phone = $("#phoneStore").val()
     let address = $("#addressStore").val()
     let description = $("#descriptionStore").val()
+    let userId = sessionStorage.getItem("idUpdate")
     let newStore = {
         nameStore: name,
         phoneStore: phone,
         addressStore: address,
         description: description,
+        user: {
+            id: userId
+        },
         logo : ""
     }
     let formData = new FormData();
