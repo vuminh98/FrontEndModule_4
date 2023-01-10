@@ -315,3 +315,29 @@ function getFormReviews(historyBuy) {
     });
     event.preventDefault()
 }
+function addCartButton(productId) {
+    let newCart = {
+        id:0,
+        quantity:1,
+        price:0,
+        user: {
+            id: idUser
+        },
+        product: {
+            id: productId
+        }
+    }
+    $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        type: "POST",
+        url: "http://localhost:8080/cart/save",
+        data:JSON.stringify(newCart),
+        success: function (data) {
+            displayItemCart()
+        }
+    });
+    event.preventDefault();
+}
