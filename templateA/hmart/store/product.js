@@ -84,7 +84,6 @@ function getAllProduct() {
 //---------------------------------------------CREATE PRODUCT------------------------------------------------------
 
 function createProduct() {
-
     let name = $("#name").val()
     let price = $("#price").val()
     let quantity = $("#quantity").val()
@@ -302,24 +301,25 @@ function updateForm(id) {
             $("#descriptionUpdate").val(data.description)
             $("#discountUpdate").val(data.discount)
             $("#categoryUpdate").val(data.category.id)
-            $("#storeUpdate").val(data.store.id).val(data.store.nameStore)
-            sessionStorage.setItem("IdStore", data.store.id)
-            sessionStorage.setItem("NameStore", data.store.nameStore)
             findAllCategory(data)
-            findAllStore(data)
+            displayNameStoreUpdate(data)
         }
     });
 }
 
+function displayNameStoreUpdate(data) {
+    document.getElementById("storeUpdate").innerHTML = data.store.nameStore
+}
+
 function updateProduct() {
     let idUpdate = sessionStorage.getItem("update");
+    let idStore = sessionStorage.getItem("idStore")
     let name = $("#nameUpdate").val()
     let price = $("#priceUpdate").val()
     let quantity = $("#quantityUpdate").val()
     let description = $("#descriptionUpdate").val()
     let discount = $("#discountUpdate").val()
     let categoryId = $("#category").val()
-    let storeId = $("#store").val()
     let ProductUpdate = {
         id: idUpdate,
         name: name,
@@ -331,8 +331,8 @@ function updateProduct() {
         category: {
             id: categoryId
         },
-        store: {
-            id: storeId
+        store : {
+            id: idStore
         }
     }
     let formData = new FormData()
