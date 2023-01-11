@@ -116,13 +116,13 @@ content += `<div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-30px">
                                                     <!-- Single Prodect -->
                                                     <div class="product">
                                                         <span class="badges">
-                                                        <span class="new">-${productStore[i].discount}</span>
+                                                        <span class="sale">-${productStore[i].discount}%</span>
                                                         </span>
                                                         <div class="thumb">
-                                                            <a href="single-product.html" class="image">
+                                                            <button onclick="viewDetailProduct(${productStore[i].id})" class="image">
                                                                 <img src="${productStore[i].image}" alt="Product" />
                                                                 <img class="hover-image" src="${productStore[i].image}" alt="Product" />
-                                                            </a>
+                                                            </button>
                                                         </div>
                                                         <div class="content">
                                                             <span class="category"><a href="#">${productStore[i].category.name}</a></span>
@@ -130,7 +130,8 @@ content += `<div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-30px">
                                                                 </a>
                                                             </h5>
                                                             <span class="price">
-                                                            <span class="new">$${productStore[i].price}</span>
+                                                            <span class="old">$${productStore[i].price}</span>
+                                                            <span class="new">$${((productStore[i].price) * (100 - productStore[i].discount)) / 100}</span>
                                                             </span>
                                                         </div>
                                                         <div class="actions">
@@ -147,6 +148,7 @@ content += `<div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-30px">
     }
     content += ``
     document.getElementById("list_product_store").innerHTML = content
+
 }
 
 function getAllProductStore() {
