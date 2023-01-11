@@ -431,14 +431,14 @@ function getProduct(product) {
                 <span class="sale">-${product.discount}%</span>
                    </span>
                  <div class="thumb">
-                     <button onclick="displayDetailProduct(${product.id})" class="image">
+                     <button onclick="viewDetailProduct(${product.id})" class="image">
                          <img src="${product.image}" alt=""/>
                          <img class="hover-image" src="${product.image}" alt=""/>
                      </button>
                  </div>
                  <div class="content">
                      <span class="category"><a href="#">${product.category.name}</a></span>
-                     <h5 class="title"><button onclick="displayDetailProduct(${product.id})">${product.name}
+                     <h5 class="title"><button onclick="viewDetailProduct(${product.id})">${product.name}
                      </a>
                      </h5>
                      <span class="price">
