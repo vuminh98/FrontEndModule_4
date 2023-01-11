@@ -18,7 +18,7 @@ function getFromItemCart(cart) {
                             <div class="content">
                                 <a href="single-product.html" class="title">${cart.product.name}</a>
                                 <span class="quantity-price">${cart.quantity} x <span class="amount">
-                                ${cart.product.price*(1-cart.product.discount/100)} $</span></span>
+                                ${Math.ceil(cart.product.price*(1-cart.product.discount/100)*100)/100} $</span></span>
                                 <a href="#" onclick="deleteItemCart(${cart.product.id})" class="remove">×</a>
                             </div></li>`
 }

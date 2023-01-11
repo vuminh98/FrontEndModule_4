@@ -1,12 +1,12 @@
-//Id:showAccount Account login
-if (sessionStorage.getItem("login") !== null) {
+if (sessionStorage.getItem("login") !== "") {
     document.getElementById("showAccount").innerHTML = sessionStorage.getItem("login")
 }
-let userId = sessionStorage.getItem("idUpdate")
+
+let userId1 = sessionStorage.getItem("idUpdate")
 function displayStore(store) {
     let content = ``;
     for (let i = 0; i < store.length; i++) {
-        if (store[i].user.id == userId) {
+        if (store[i].user.id == userId1) {
             content += `<table border = "1" style=" border:solid; margin-top: 50px">
              <tr>
             <td style="width: 250px; height: 250px"><img src="${store[i].logo}"  style="width: 200px; height: 200px;background-color: white" ></td>
@@ -54,14 +54,13 @@ function createStore() {
     let phone = $("#phoneStore").val()
     let address = $("#addressStore").val()
     let description = $("#descriptionStore").val()
-    let userId = sessionStorage.getItem("idUpdate")
     let newStore = {
         nameStore: name,
         phoneStore: phone,
         addressStore: address,
         description: description,
         user: {
-            id: userId
+            id: userId1
         },
         logo : ""
     }
@@ -231,7 +230,7 @@ function getStore(store) {
 function displayStorePage(data) {
     let content = ``;
     for (let i = 0; i < data.length; i++) {
-        if (data[i].user.id == userId) {
+        if (data[i].user.id == userId1) {
             content += getStore(data[i])
         }
     }

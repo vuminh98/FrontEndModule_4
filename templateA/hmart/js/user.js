@@ -170,6 +170,7 @@ function login() {
             sessionStorage.setItem("idUpdate", data.id)
             sessionStorage.setItem("token", data.accessToken)
             checkRoleAndStatusToLogin(data.id)
+            getStoreIdToSession(data.id)
         },
         error: function () {
             let n
@@ -210,6 +211,7 @@ function checkRoleAndStatusToLogin(id) {
         url: "http://localhost:8080/users/" + id,
         success: function (data) {
             let loginContent
+            let loginContentOutside
             if (data.status === 0) {
                 let s = '<p class="pt-4" style="color: red">You have been blocked. Please contact support!!!</p>'
                 document.getElementById("checkStatus").innerHTML = s
@@ -221,12 +223,15 @@ function checkRoleAndStatusToLogin(id) {
                     } else {
                         loginContent = '<a href="../my-account.html"><i class="fa fa-user"></i>Welcome! ' +
                             data.name +
-                            '</a>'
+                            '</a>';
+                        loginContentOutside = '<a href="my-account.html"><i class="fa fa-user"></i>Welcome! ' +
+                            data.name +
+                            '</a>';
                         count += 1
-                        window.location.href = "my-account.html"
                     }
                     sessionStorage.setItem("count", count)
                     sessionStorage.setItem("login", loginContent)
+                    sessionStorage.setItem("loginOutside", loginContentOutside)
                     window.location.href = "store/home.html"
                 }
             }
@@ -237,6 +242,7 @@ function checkRoleAndStatusToLogin(id) {
 //Logout
 function logout() {
     sessionStorage.removeItem("login")
+    sessionStorage.removeItem("loginOutside")
     sessionStorage.removeItem("idUpdate")
     sessionStorage.removeItem("token")
     sessionStorage.removeItem("count")
@@ -325,9 +331,26 @@ function checkPaymentStore() {
     let check = sessionStorage.getItem("count")
     if (check == 1){
         document.getElementById("paymentStore").hidden = true
+        document.getElementById("pending").hidden = true
     }
 }
 
+function getStoreIdToSession(id) {
+    $.ajax({
+        headers: {
+            Authorization: "Bearer " + sessionStorage.getItem("token"),
+        },
+        type: "GET",
+        url: "http://localhost:8080/store/",
+        success: function (data) {
+            for (let i = 0; i < data.length; i++) {
+                if (data[i].user.id === id) {
+                    sessionStorage.setItem("idStore", data[i].id)
+                }
+            }
+        }
+    });
+}
 
 
 
