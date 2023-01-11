@@ -35,7 +35,7 @@ function displayProduct(product) {
                          class="pe-7s-like"></i></button>
                      <button class="action quickview" data-link-action="quickview"
                              title="Quick view" data-bs-toggle="modal"
-                             data-bs-target="#exampleModal" onclick="displayDetailProduct(${product[i].id})"><i
+                             data-bs-target="#exampleModal" onclick="viewDetailProduct(${product[i].id})"><i
                          class="pe-7s-look"></i></button>
                      <button class="action compare" title="Compare"
                              data-bs-toggle="modal"
