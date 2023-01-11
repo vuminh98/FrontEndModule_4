@@ -94,7 +94,6 @@ function displayProductShop(id) {
         success: function (data) {
             sessionStorage.setItem("idStore",id)
             transferPage(data)
-
         }
     })
 }
@@ -159,21 +158,17 @@ function getAllProductStore() {
     });
 }
 
-function displayNameStore(store) {
-    return `<option value="${store.id}">${store.nameStore}</option>`
+function displayNameStore(data) {
+    document.getElementById("storeForm").innerHTML = data.nameStore
 }
 
 function findAllIdStore() {
+    let idStoreProduct = sessionStorage.getItem("idStore")
     $.ajax({
         type: "GET",
-        url: "http://localhost:8080/store",
+        url: "http://localhost:8080/store/getIdStore/" + idStoreProduct,
         success: function (data) {
-            let content = `<select id="store">`
-                for (let i = 0; i < data.length; i++) {
-                        content += displayNameStore(data[i])
-                    }
-                content += `<select>`
-                document.getElementById("storeForm").innerHTML = content;
+            displayNameStore(data)
         }
     });
 }

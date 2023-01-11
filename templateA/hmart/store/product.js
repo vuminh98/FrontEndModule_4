@@ -82,7 +82,9 @@ function getAllProduct() {
 }
 // ---------------------------------------------o0o-----o0o--------------------------------------------------------
 //---------------------------------------------CREATE PRODUCT------------------------------------------------------
+
 function createProduct() {
+
     let name = $("#name").val()
     let price = $("#price").val()
     let quantity = $("#quantity").val()
@@ -239,13 +241,13 @@ function displayProductShop(id) {
 // ---------------------------------------------o0o-----o0o--------------------------------------------------------
 //---------------------------------------------CREATE A PRODUCT ON STORE------------------------------------------------------
 function createOneProduct() {
+    let idStoreProducts = sessionStorage.getItem("idStore")
     let name = $("#name").val()
     let price = $("#price").val()
     let quantity = $("#quantity").val()
     let description = $("#description").val()
     let discount = $("#discount").val()
     let category = $("#category").val()
-    let store = $("#store").val()
     let newProduct = {
         name: name,
         price: price,
@@ -256,7 +258,7 @@ function createOneProduct() {
             id: category
         },
         store: {
-            id: store
+            id: idStoreProducts
         },
         image: ""
     }
