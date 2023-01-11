@@ -5,7 +5,7 @@ function getListPaymentStore(payment) {
         return `
                                         <tr>
                                             <th style="text-align: center;" data-bs-toggle="modal" 
-                                                data-bs-target="#staticBackdrop" onclick="detailPaymentUser()"
+                                                data-bs-target="#staticBackdrop" onclick="detailPaymentUser(${payment.user.id})"
                                                 >${payment.user.name}</th>
                                             <th style="text-align: center">${payment.user.phone}</th>
                                             <th style="text-align: center">${payment.dateCreated}</th>
@@ -93,11 +93,17 @@ function deletePayment(paymentId) {
     });
     event.preventDefault();
 }
-function detailPaymentUser() {
+function detailPaymentUser(id) {
     document.getElementById("table-payment-detail-user").innerHTML = "";
+    document.getElementById("btn-back").innerHTML = `<button type="button" class="btn-success" onclick="detailPaymentUser(${id})"
+                        style="border-radius: 20%" id="back-detail-user">Back
+                </button>
+                <button type="button" class="btn-danger" data-bs-dismiss="modal" style="border-radius: 20%">Close
+                </button>`;
+
     $.ajax({
         type: "GET",
-        url: "http://localhost:8080/store/one_user?user="+userId+"&store="+storeId,
+        url: "http://localhost:8080/store/one_user?user="+id+"&store="+storeId,
         success: function (data) {
             let count = 0;
             let totalPrice = 0;
@@ -127,9 +133,9 @@ function detailPaymentUser() {
 }
 function getListPaymentDetailUser(payment,count) {
     if (`${payment.status}` === "true") {
-        return `<th>${count}</th><th>${payment.dateCreated}</th><th>${payment.totalPrice} $</th>
+        return `<tr><th>${count}</th><th>${payment.dateCreated}</th><th>${payment.totalPrice} $</th>
             <th><a href="#" onclick="detailPayment(${payment.id})" class="btn-outline-hover-dark">
-            <i class="fa-sharp fa-solid fa-eye"></i></a></th>`
+            <i class="fa-sharp fa-solid fa-eye"></i></a></th></tr>`
     }else {
         return ``;
     }
@@ -184,11 +190,16 @@ function displayFieldDate() {
 }
 function informationSearchPayment() {
     let key = $("#select-fields-payment").val()
-    let value = $("#search-field-payment").val()
+    let idValue = "#search-field-payment";
+    if (key === "dateCreated"){
+        idValue = "#search-date-payment";
+    }
+    let value = $(idValue).val()
     let formData = new FormData()
+    let idStore = storeId;
     formData.append("value",value)
     formData.append("key",key)
-    formData.append("storeId",storeId)
+    formData.append("storeId",idStore)
     $.ajax({
         contentType: false,
         processData: false,
