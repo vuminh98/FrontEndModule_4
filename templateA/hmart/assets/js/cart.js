@@ -34,7 +34,7 @@ function getFromItemCart(cart) {
                             <div class="content">
                                 <a href="single-product.html" class="title">${cart.product.name}</a>
                                 <span class="quantity-price">${cart.quantity} x <span class="amount">
-                                ${cart.product.price*(1-cart.product.discount/100)} $</span></span>
+                                ${Math.ceil(cart.product.price*(1-cart.product.discount/100)*100)/100} $</span></span>
                                 <a href="#" onclick="deleteItemCart(${cart.product.id})" class="remove">×</a>
                             </div></li>`
 }
@@ -42,7 +42,7 @@ function getListItemCart(cart) {
     return `                    <tr>
                                     <td class="product-thumbnail">
                                         <a href="#"><img class="img-responsive ml-15px"
-                                                         src="${cart.product.image}" alt=""/></a>
+                                                         src="${cart.product.image}" alt="loaddingg...."/></a>
                                     </td>
                                     <td class="product-name"><a href="#">${cart.product.name}</a></td>
                                     <td class="product-price-cart"><span class="amount">
@@ -58,7 +58,7 @@ function getListItemCart(cart) {
 }
 function getListItem(cart) {
     return ` <li><span class="order-middle-left">- ${cart.product.name} X ${cart.quantity}</span> <span
-                                                class="order-price">${Math.ceil(cart.product.price*(1-cart.product.discount/100)*100)/100} $</span></li>`
+             class="order-price">${Math.ceil(cart.product.price*(1-cart.product.discount/100)*100)/100} $</span></li>`
 }
 let increase =1;
 let decrease =-1;
@@ -272,7 +272,7 @@ function getFormReviews(historyBuy) {
                         </tr>
                         <tr>
                             <th>${historyBuy.product.name} X ${historyBuy.quantity} = 
-                                ${historyBuy.product.price*historyBuy.quantity*(1-historyBuy.product.discount/100)} $</th>
+                                ${Math.ceil(historyBuy.product.price*historyBuy.quantity*(1-historyBuy.product.discount/100)*100)/100} $</th>
                             <td style="text-align: right"><button type="button" class="btn-success"
                              onclick="saveReviews(${historyBuy.product.id})" style="border-radius: 20%">Save </button>
                             </td>
