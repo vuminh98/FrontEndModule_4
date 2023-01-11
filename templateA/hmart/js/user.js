@@ -89,8 +89,10 @@ function updateUser() {
             }
             for (let i = 0; i < data.roles.length; i++) {
                 if (data.roles[i].name === "BUYER") {
+                    count += 1;
                     for (let j = i + 1; j < data.roles.length; j++) {
                         if (data.roles[j].name === "SELLER") {
+                            count += 1;
                             document.getElementById("checkboxBecomeSeller").hidden = true
                             let n = '<p style="color: #816bf9">You are seller</p>'
                             document.getElementById("pendingBecomeBuyerNotification").innerHTML = n
