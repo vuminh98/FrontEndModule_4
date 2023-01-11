@@ -26,12 +26,12 @@ function getTotalCart(cart) {
     return `${cart.price}`
 }
 function getFromItemCart(cart) {
-    return `<li><a href="single-product.html" class="image"><img src="assets/images/product-image/1.webp"
+    return `<li><a href="single-product.html" class="image"><img src="${cart.product.image}"
                             alt="Cart product Image"></a>
                             <div class="content">
                                 <a href="single-product.html" class="title">${cart.product.name}</a>
                                 <span class="quantity-price">${cart.quantity} x <span class="amount">
-                                ${cart.product.price*(1-cart.product.discount/100)} $</span></span>
+                                ${Math.ceil(cart.product.price*(1-cart.product.discount/100)*100)/100} $</span></span>
                                 <a href="#" onclick="deleteItemCart(${cart.product.id})" class="remove">×</a>
                             </div></li>`
 }
@@ -39,11 +39,11 @@ function getListItemCart(cart) {
     return `                    <tr>
                                     <td class="product-thumbnail">
                                         <a href="#"><img class="img-responsive ml-15px"
-                                                         src="assets/images/product-image/143.webp" alt=""/></a>
+                                                         src="${cart.product.image}" alt="loaddingg...."/></a>
                                     </td>
                                     <td class="product-name"><a href="#">${cart.product.name}</a></td>
                                     <td class="product-price-cart"><span class="amount">
-                                        ${cart.product.price*(1-cart.product.discount/100)} $</span></td>
+                                        ${Math.ceil(cart.product.price*(1-cart.product.discount/100)*100)/100} $</span></td>
                                     <td class="product-quantity"><button onclick="updateQuantity(${cart.product.id},decrease)"
                                         >-</button><span>${cart.quantity}</span>
                                         <button onclick="updateQuantity(${cart.product.id},increase)">+</button></td>
@@ -55,7 +55,7 @@ function getListItemCart(cart) {
 }
 function getListItem(cart) {
     return ` <li><span class="order-middle-left">- ${cart.product.name} X ${cart.quantity}</span> <span
-                                                class="order-price">${cart.product.price*(1-cart.product.discount/100)} $</span></li>`
+             class="order-price">${Math.ceil(cart.product.price*(1-cart.product.discount/100)*100)/100} $</span></li>`
 }
 let increase =1;
 let decrease =-1;
@@ -65,7 +65,7 @@ function updateQuantity(productId,quantityUpdate) {
         quantity:quantityUpdate,
         price:0,
         user: {
-            id: 1
+            id: idUser
         },
         product: {
             id: productId
@@ -91,7 +91,7 @@ function deleteItemCart(productId) {
         quantity:0,
         price:0,
         user: {
-            id: 1
+            id: idUser
         },
         product: {
             id: productId
@@ -269,7 +269,7 @@ function getFormReviews(historyBuy) {
                         </tr>
                         <tr>
                             <th>${historyBuy.product.name} X ${historyBuy.quantity} = 
-                                ${historyBuy.product.price*historyBuy.quantity*(1-historyBuy.product.discount/100)} $</th>
+                                ${Math.ceil(historyBuy.product.price*historyBuy.quantity*(1-historyBuy.product.discount/100)*100)/100} $</th>
                             <td style="text-align: right"><button type="button" class="btn-success"
                              onclick="saveReviews(${historyBuy.product.id})" style="border-radius: 20%">Save </button>
                             </td>

@@ -208,12 +208,13 @@ function informationSearchPayment() {
 }
 
 function getStoreIdToSession() {
+    sessionStorage.setItem("idStore", 0)
     $.ajax({
         headers: {
             Authorization: "Bearer " + sessionStorage.getItem("token"),
         },
         type: "GET",
-        url: "http://localhost:8080/store",
+        url: "http://localhost:8080/store/",
         success: function (data) {
             for (let i = 0; i < data.length; i++) {
                 if (data[i].user.id == userId) {
