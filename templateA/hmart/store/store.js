@@ -1,5 +1,9 @@
-if (sessionStorage.getItem("login") !== "") {
+if (sessionStorage.getItem("login") !== null) {
     document.getElementById("showAccount").innerHTML = sessionStorage.getItem("login")
+}
+
+if (sessionStorage.getItem("count") == 1 || sessionStorage.getItem("count") == null) {
+    document.getElementById("createProductButton").hidden = true
 }
 
 let userId1 = sessionStorage.getItem("idUpdate")
